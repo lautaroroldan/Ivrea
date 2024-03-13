@@ -1,0 +1,46 @@
+---
+interface Props {
+    imgSrc: string;
+    title: string;
+    releaseDate: string;
+}
+
+const { imgSrc, title, releaseDate } = Astro.props;
+---
+
+<main>
+    <article>
+        <img src={imgSrc} />
+    </article>
+    <article class="description">
+        <h3 class="title">{title}</h3>
+        <h4 class="release"><span>Release Date : </span>{releaseDate}</h4>
+        <p class="release">View synopsis</p>
+    </article>
+</main>
+
+<style>
+    main {
+        max-width: 300px;
+    }
+    article {
+        display: flex;
+        flex-direction: column;
+    }
+    img {
+        border-radius: 4px;
+    }
+
+    .title {
+        font-weight: 500;
+    }
+    .release {
+        font-size: 14px;
+        color: #6b6b6b;
+        font-weight: 400;
+    }
+    .description {
+        margin-block: 12px;
+        gap: 2px;
+    }
+</style>

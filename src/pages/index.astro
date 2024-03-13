@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AnimeCard from "../components/AnimeCard.astro";
+import { getAnimeList } from "../services/AnimeService";
+
+const animeList = getAnimeList();
+---
+
+<Layout title="Editorial Ivrea">
+	<section class="upcomingReleases">
+		{
+			animeList.map((anime) => (
+				<AnimeCard
+					title={anime.title}
+					releaseDate={anime.releaseDate}
+					imgSrc={anime.img}
+				/>
+			))
+		}
+	</section>
+</Layout>
+
+<style>
+	.upcomingReleases {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 0.8rem;
+		place-items: center;
+		max-width: 1100px;
+		margin: 0 auto;
+	}
+</style>
